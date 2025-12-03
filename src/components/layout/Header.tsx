@@ -80,10 +80,10 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </div>
             <div>
-              <p className="text-sm font-medium" style={{ color: colors.textPrimary }}>
+              <p className="text-sm font-medium text-[#1F2937]" style={{ color: colors.textPrimary }}>
                 Jessie Doe
               </p>
-              <p className="text-xs" style={{ color: colors.textSecondary }}>
+              <p className="text-xs text-[#374151]" style={{ color: colors.textSecondary }}>
                 Super Admin
               </p>
             </div>

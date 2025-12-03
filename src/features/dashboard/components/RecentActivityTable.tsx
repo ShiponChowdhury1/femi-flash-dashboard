@@ -8,6 +8,7 @@ import { Pagination } from '@/src/components/ui/Pagination';
 import { colors } from '@/src/constants/colors';
 import { useAppSelector } from '@/src/store/hooks';
 import { PlanType } from '@/src/types/common';
+import { MoreVertical } from 'lucide-react';
 
 export const RecentActivityTable: React.FC = () => {
   const { recentActivity } = useAppSelector((state) => state.dashboard);
@@ -74,6 +75,7 @@ export const RecentActivityTable: React.FC = () => {
             <Table.Head>Plan</Table.Head>
             <Table.Head>Status</Table.Head>
             <Table.Head>Created</Table.Head>
+            <Table.Head> </Table.Head>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -89,6 +91,11 @@ export const RecentActivityTable: React.FC = () => {
                 <Badge type="status" value={user.status} />
               </Table.Cell>
               <Table.Cell>{user.created}</Table.Cell>
+              <Table.Cell>
+                <button className="text-gray-400 hover:text-gray-600">
+                  <MoreVertical size={20} />
+                </button>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

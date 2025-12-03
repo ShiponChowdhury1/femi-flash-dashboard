@@ -29,7 +29,7 @@ export const SubscriptionActivityTable: React.FC = () => {
 
   return (
     <Card>
-      <div className="mb-6">
+      <div className="mb-6 flex items-center justify-between">
         <h3 className="text-lg font-semibold mb-4" style={{ color: colors.textPrimary }}>
           Recent Activity
         </h3>

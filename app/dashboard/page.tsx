@@ -15,8 +15,8 @@ export default function DashboardPage() {
       <div className="p-8 space-y-6">
         {/* Page Title */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600 mt-1">Manage the platform with full control and clarity.</p>
+          <h1 className="text-3xl font-bold text-[#374151]">Dashboard</h1>
+          <p className="text-[#ABABAB] mt-1 text-[18px]">Manage the platform with full control and clarity.</p>
         </div>
 
         {/* Stats Cards */}

@@ -47,7 +47,7 @@ export const Table: React.FC<TableProps> & {
 };
 
 Table.Header = ({ children }) => (
-  <thead style={{ backgroundColor: colors.borderLight }}>
+  <thead style={{ backgroundColor: colors.borderLight, borderBottom: `1px solid ${colors.border}` }}>
     {children}
   </thead>
 );
@@ -61,8 +61,7 @@ Table.Body = ({ children }) => (
 Table.Row = ({ children, onClick, className = '' }) => (
   <tr
     onClick={onClick}
-    className={`border-b transition-colors ${onClick ? 'cursor-pointer hover:bg-gray-50' : ''} ${className}`}
-    style={{ borderColor: colors.border }}
+    className={`transition-colors ${onClick ? 'cursor-pointer hover:bg-gray-50' : ''} ${className}`}
   >
     {children}
   </tr>
