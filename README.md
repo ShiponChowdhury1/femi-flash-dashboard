@@ -1,38 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FemiFlash Dashboard
 
-## Getting Started
+Modern admin dashboard built with Next.js 16, Redux Toolkit, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/                    # Next.js routes
+  ├── dashboard/        # Dashboard page
+  ├── users/           # Users management
+  └── ...              # Other routes
 
-## Learn More
+src/
+  ├── components/      # Shared UI components
+  │   ├── ui/         # Button, Input, Card, Table, etc.
+  │   └── layout/     # Sidebar, Header
+  ├── features/        # Feature modules (dashboard, users, etc.)
+  │   ├── dashboard/  # Dashboard components & Redux slice
+  │   └── users/      # Users components & Redux slice
+  ├── store/          # Redux store & typed hooks
+  ├── types/          # TypeScript types
+  ├── data/           # Mock data
+  ├── constants/      # Colors, navigation
+  └── styles/         # CSS variables
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Design Tokens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Element | Color |
+|---------|-------|
+| Sidebar BG | `#D1D5DB` |
+| Sidebar Active | `#003425` |
+| Surface | `#FFFFFF` |
+| Chart Primary | `#7987FF` |
+| Pagination | `#4361EE` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✅ Features
 
-## Deploy on Vercel
+- **Dashboard**: Stats cards, charts, activity table
+- **Users**: Search, filtering, pagination
+- **Redux**: Typed hooks, feature slices
+- **Components**: Reusable UI library
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# femi-flash-dashboard
-# femi-flash-dashboard
+- Next.js 16
+- Redux Toolkit
+- TypeScript
+- Tailwind CSS 4
+- Recharts
+
+## 📝 Adding Features
+
+1. Create feature folder in `src/features/[name]/`
+2. Add Redux slice with actions/reducers
+3. Create components
+4. Add types in `src/types/`
+5. Create route in `app/[name]/page.tsx`
+
+## 🔗 Commands
+
+```bash
+npm run dev      # Development
+npm run build    # Production build
+npm run start    # Start production
+npm run lint     # Lint code
+```
+
+---
+
+Built with Next.js and Redux Toolkit
