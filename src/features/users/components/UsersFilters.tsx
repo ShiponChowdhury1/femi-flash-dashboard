@@ -15,7 +15,9 @@ export const UsersFilters: React.FC = () => {
 
   return (
     <div className="mb-6">
+      {/* Search left + Tabs right */}
       <div className="flex items-center justify-between mb-4">
+        {/* Search Field */}
         <div className="flex-1 max-w-md">
           <Input
             placeholder="Search users..."
@@ -38,22 +40,25 @@ export const UsersFilters: React.FC = () => {
             }
           />
         </div>
-      </div>
 
-      <div className="flex gap-2">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => dispatch(setPlanFilter(tab))}
-            className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-            style={{
-              backgroundColor: filters.plan === tab ? colors.borderLight : 'transparent',
-              color: filters.plan === tab ? colors.textPrimary : colors.textSecondary,
-            }}
-          >
-            {tab}
-          </button>
-        ))}
+        {/* Tabs on the right */}
+        <div className="flex gap-2 ml-4">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => dispatch(setPlanFilter(tab))}
+              className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              style={{
+                backgroundColor:
+                  filters.plan === tab ? colors.borderLight : 'transparent',
+                color:
+                  filters.plan === tab ? colors.textPrimary : colors.textSecondary,
+              }}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

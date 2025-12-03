@@ -22,6 +22,7 @@ export interface DashboardState {
   stats: DashboardStats;
   userGrowth: UserGrowthData;
   monthlyRevenue: ChartDataPoint[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   recentActivity: any[]; // Will be typed with User type
   loading: boolean;
   error?: string;

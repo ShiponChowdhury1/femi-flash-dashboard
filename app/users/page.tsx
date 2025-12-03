@@ -8,9 +8,15 @@ import { UsersFilters, UsersTable } from '@/src/features/users';
 export default function UsersPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header title="Users Management" subtitle="Manage and monitor all platform users." />
+      <Header showSearch={false} />
       
-      <div className="p-8">
+      <div className="p-8 space-y-6">
+        {/* Page Title */}
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Users Management</h1>
+          <p className="text-gray-600 mt-1">Manage and monitor all platform users.</p>
+        </div>
+
         <Card>
           <UsersFilters />
           <UsersTable />

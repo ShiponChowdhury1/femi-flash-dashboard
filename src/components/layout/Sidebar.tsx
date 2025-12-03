@@ -14,7 +14,8 @@ import {
   BookDashed, 
   BookCheck, 
   Settings, 
-  LogOut 
+  LogOut, 
+  ThumbsUp
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -41,10 +42,9 @@ export const Sidebar: React.FC = () => {
       className="w-64 min-h-screen fixed left-0 top-0 flex flex-col"
       style={{ backgroundColor: colors.sidebarBg }}
     >
-      <div className="p-6">
-        <h1 className="text-xl font-bold" style={{ color: colors.textPrimary }}>
-          YOU FIT DO AM
-        </h1>
+      <div className="p-6 flex items-center gap-3 border-b mb-6" style={{ borderColor: colors.border }} >
+        <span> <ThumbsUp size={30} /></span>
+         <span> YOU FIT DO AM</span>
       </div>
 
       <nav className="flex-1 px-3 flex flex-col">

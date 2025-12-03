@@ -6,19 +6,18 @@ import { Table } from '@/src/components/ui/Table';
 import { Badge } from '@/src/components/ui/Badge';
 import { Pagination } from '@/src/components/ui/Pagination';
 import { colors } from '@/src/constants/colors';
-import { useAppSelector } from '@/src/store/hooks';
+import { mockUsers } from '@/src/data/users';
 import { PlanType } from '@/src/types/common';
 
-export const RecentActivityTable: React.FC = () => {
-  const { recentActivity } = useAppSelector((state) => state.dashboard);
+export const SubscriptionActivityTable: React.FC = () => {
   const [activePlan, setActivePlan] = useState<'All' | PlanType>('All');
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 4;
 
   const filteredData =
     activePlan === 'All'
-      ? recentActivity
-      : recentActivity.filter((user) => user.plan === activePlan);
+      ? mockUsers
+      : mockUsers.filter((user) => user.plan === activePlan);
 
   const totalPages = Math.ceil(filteredData.length / pageSize);
   const paginatedData = filteredData.slice(
@@ -30,40 +29,29 @@ export const RecentActivityTable: React.FC = () => {
 
   return (
     <Card>
-     <div className="mb-6">
-  <div className="flex items-center justify-between mb-4">
-    {/* Left: Title */}
-    <h3
-      className="text-lg font-semibold"
-      style={{ color: colors.textPrimary }}
-    >
-      Recent Activity
-    </h3>
-
-    {/* Right: Tabs */}
-    <div className="flex gap-2">
-      {tabs.map((tab) => (
-        <button
-          key={tab}
-          onClick={() => {
-            setActivePlan(tab);
-            setCurrentPage(1);
-          }}
-          className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-          style={{
-            backgroundColor:
-              activePlan === tab ? colors.borderLight : 'transparent',
-            color:
-              activePlan === tab ? colors.textPrimary : colors.textSecondary,
-          }}
-        >
-          {tab}
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
-
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-4" style={{ color: colors.textPrimary }}>
+          Recent Activity
+        </h3>
+        <div className="flex gap-2">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                setActivePlan(tab);
+                setCurrentPage(1);
+              }}
+              className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              style={{
+                backgroundColor: activePlan === tab ? colors.borderLight : 'transparent',
+                color: activePlan === tab ? colors.textPrimary : colors.textSecondary,
+              }}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <Table>
         <Table.Header>
