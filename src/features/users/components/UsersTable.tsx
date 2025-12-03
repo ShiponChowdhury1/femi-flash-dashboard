@@ -1,16 +1,53 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Table } from '@/src/components/ui/Table';
 import { Badge } from '@/src/components/ui/Badge';
 import { Pagination } from '@/src/components/ui/Pagination';
 import { useAppSelector, useAppDispatch } from '@/src/store/hooks';
 import { setPage } from '../slice';
 import { User } from '@/src/types/user';
+import { UserDetailsModal } from './UserDetailsModal';
+import { MoreVertical } from 'lucide-react';
 
 export const UsersTable: React.FC = () => {
   const dispatch = useAppDispatch();
   const { list, filters, pagination } = useAppSelector((state) => state.users);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleUserClick = (user: User) => {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+  const handleSuspendUser = async (userId: string): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const success = Math.random() > 0.3;
+        if (success) {
+          console.log('User suspended:', userId);
+          resolve();
+        } else {
+          reject(new Error('Failed to suspend user'));
+        }
+      }, 1000);
+    });
+  };
+
+  const handleUpdateUser = async (userId: string, name: string): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const success = Math.random() > 0.3;
+        if (success) {
+          console.log('User updated:', userId, name);
+          resolve();
+        } else {
+          reject(new Error('Failed to update user'));
+        }
+      }, 1000);
+    });
+  };
 
   const filteredUsers = useMemo(() => {
     let filtered = [...list];
@@ -56,6 +93,7 @@ export const UsersTable: React.FC = () => {
             <Table.Head>Plan</Table.Head>
             <Table.Head>Status</Table.Head>
             <Table.Head>Created</Table.Head>
+            <Table.Head> </Table.Head>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -71,6 +109,14 @@ export const UsersTable: React.FC = () => {
                 <Badge type="status" value={user.status} />
               </Table.Cell>
               <Table.Cell>{user.created}</Table.Cell>
+              <Table.Cell>
+                <button 
+                  className="text-gray-400 hover:text-gray-600"
+                  onClick={() => handleUserClick(user)}
+                >
+                  <MoreVertical size={20} />
+                </button>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -85,6 +131,14 @@ export const UsersTable: React.FC = () => {
           />
         </div>
       )}
+
+      <UserDetailsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        user={selectedUser}
+        onSuspendUser={handleSuspendUser}
+        onUpdateUser={handleUpdateUser}
+      />
     </>
   );
 };
