@@ -1,3 +1,3 @@
-// Settings feature placeholder
-// Add components and logic as needed
-export {};
+// Settings feature exports
+export * from './components';
+
